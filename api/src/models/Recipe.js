@@ -1,4 +1,6 @@
 const {  DataTypes } = require('sequelize');
+require('uuid')
+
 
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
@@ -16,7 +18,7 @@ module.exports = (sequelize) => {
     resume: {
       type: DataTypes.TEXT,
       allowNull: false,
-    },
+    }, 
     spoonacularScore: {
       type: DataTypes.INTEGER    
     },
