@@ -1,9 +1,10 @@
-import { Switch } from "react-router-dom"
-import { bindActionCreators } from "redux"
-import { ADD_RECIPES } from "../actions/actionsName"
+import { ADD_RECIPES, ADD_DIETTYPE, ADD_DIET, ADD_POSTED } from "../actions/actionsName"
 
 const initialState = {
-    recipes: []
+    recipes: [],
+    diets: [],
+    postedRecipe:""
+    
 }
 
 export default function reducer (state=initialState, action){
@@ -12,6 +13,25 @@ export default function reducer (state=initialState, action){
             return {
                 ...state,
                 recipes: action.payload
+            }
+        }
+        case ADD_DIETTYPE: {
+            return {
+                ...state,
+                diets: action.payload
+            }
+        }
+        case ADD_DIET: {
+            return {
+                ...state,
+                diet: action.payload
+            }
+        }
+        case ADD_POSTED: {
+            console.log(action.payload)
+            return {
+                ...state,
+                postedRecipe: action.payload
             }
         }
         default: {

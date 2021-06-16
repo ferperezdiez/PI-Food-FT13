@@ -3,12 +3,15 @@ import { useSelector } from 'react-redux';
 import recipeByUser from "../images/recipeByUser.jpg"
 
 export default function List (){
-    const state = useSelector(state => state.recipes)    
+    
+    const state = useSelector(state => state.recipes)
+    
+    
     return (
         <div>
             <ul>
          {state.map(function(recipe) {
-              console.log(state)
+             
              return (
                  <li>
                      <span>{recipe.title? recipe.title : recipe.name }</span>
