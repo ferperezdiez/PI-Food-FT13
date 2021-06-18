@@ -1,6 +1,6 @@
 const { Router } = require('express');
 require('dotenv').config();
-const {Recipe, DietType} = require('../db');
+const {Recipe, Diets} = require('../db');
 const axios = require('axios').default;
 const {v4: uuidv4} = require('uuid');
 const { Op } = require("sequelize")
@@ -14,52 +14,79 @@ const {
 
 const router = Router();
 
-router.get('/recipes', (req, res, next) => {
-    const {name} = req.query
-    const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&query=${name}`)
-    console.log(recipiesApy)
-    const myRecipies = Recipe.findAll({
-        where: {
-            name: {[Op.iLike]: `%${name}%`}
-        }
-         }
-    )    
+router.get('/recipes/all', (req, res, next) => {     
+    const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
+    const myRecipies = Recipe.findAll()    
         Promise.all([recipiesApy, myRecipies])
-        .then(response => {
+        .then(response => { 
             var  [recipiesApyResponse, myRecipiesResponse] = response                      
-            var resultado = myRecipiesResponse.concat(recipiesApyResponse.data.results)
-            var resultado2 = resultado.slice(0,9)
+            var resultado = myRecipiesResponse.concat(recipiesApyResponse.data.results)                     
+            if(resultado.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
+            res.send(resultado)})
+        .catch((err) => next(err))    
+    
+    });
+
+router.get('/recipes', (req, res, next) => { 
+
+  if(req.query.diet){
+    const {diet} = req.query
+    const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=300`)
+    const myRecipies = Recipe.findAll({
+          include: Diets })    
+        Promise.all([recipiesApy, myRecipies])
+        .then(response => { 
+            var  [recipiesApyResponse, myRecipiesResponse] = response                      
+            var resultado = myRecipiesResponse.concat(recipiesApyResponse.data.results)         
+            var resultado2 = resultado.filter(recipe => recipe.diets.includes(diet)).slice(0, 99)         
             if(resultado2.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
-            res.send(resultado2)
-            
-        })
-        .catch((err) => next(err))   
+            res.send(resultado2)})
+        .catch((err) => next(err))    
+      }
+      else if(req.query.name){
+        const {name} = req.query
+        const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&query=${name}&number=100`)
+        const myRecipies = Recipe.findAll({
+            where: {
+              name: {[Op.iLike]: `%${name}%`}},
+              include: Diets})    
+            Promise.all([recipiesApy, myRecipies])
+            .then(response => {
+                var  [recipiesApyResponse, myRecipiesResponse] = response                      
+                var resultado = myRecipiesResponse.concat(recipiesApyResponse.data.results)
+                var resultado2 = resultado
+                if(resultado2.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
+                res.send(resultado2)})
+            .catch((err) => next(err))}
     });    
     
 
 
+    
+
+
   router.get('/types', (req, res, next) => {      
-    const dietTypes = []
+    const dietss = []
       const dietsData = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
       dietsData.then(data => {  
         let dietsDataResult = data
         dietsDataResult.data.results.forEach(result => {          
         result.diets.forEach(result => {
-          if (!dietTypes.includes(result)) {
-            dietTypes.push(result)
+          if (!dietss.includes(result)) {
+            dietss.push(result)
         }
       })
     })
     })    
     .then(() => {      
-      dietTypes.forEach(result => {      
-      DietType.create({
+      dietss.forEach(result => {      
+      Diets.create({
       name: result
       })
     })
     })
     .then(dietResult => {
-      DietType.findAll().then(data => {         
+      Diets.findAll().then(data => {         
       return res.send(data)})})
     .catch((err) => next(err))
     })
@@ -90,7 +117,7 @@ router.get('/recipes', (req, res, next) => {
             where: {
               id: req.params.id
             }, 
-            include: DietType
+            include: Diets
           }).then(response => {
             return res.send(response)
           }).catch(err=> res.status(404).json({error: 'ID invalido'})); 

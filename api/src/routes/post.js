@@ -1,4 +1,4 @@
-const {Recipe, DietType} = require('../db');
+const {Recipe, Diets} = require('../db');
 const {v4: uuidv4} = require('uuid');
 const { Router } = require('express');
 
@@ -14,12 +14,11 @@ router.post ('/recipes', (req, res, next) => {
             message: "'nombre' y 'resumen del plato' son obligatorios",
         });
     }
-    // try {
-        const createdRecipe = Recipe.create(recipe);
-        createdRecipe.then(result => {
+   
+        const createdRecipe = Recipe.create(recipe)
+        .then(result => {
             for (var i=0; i < req.body.diet.length; i++){
-            result.addDietType(diet[i], {through:'recipesDiet'})
-            console.log(diet[i])
+            result.addDiets(diet[i], {through:'recipesDiet'})            
             }
         })
         .then(() =>{
@@ -27,25 +26,11 @@ router.post ('/recipes', (req, res, next) => {
                          where: {
                          name: req.body.name
                         },
-                        include: DietType
+                        include: Diets
             });
             findCreated.then(result => res.send(result));
         })
-            // for (var i=0; i < req.body.diet.length - 1; i++){
-            //     result.addDietType(req.body.diet[i], {through:'recipesDiet'})
-        //     const result = await Recipe.findOne({
-        //         where: {
-        //             name: req.body.name
-        //         },
-        //         include: DietType
-        //     });
-        //     return res.send(result);
-        // } catch(error) {
-
-    //     })
-    //     }         
-    //     next(error);
-    // }
+            
   
   })
 

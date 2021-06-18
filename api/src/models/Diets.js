@@ -7,7 +7,7 @@ require('uuid')
 // Luego le injectamos la conexion a sequelize.
 
 module.exports = (sequelize) => {
-    sequelize.define('dietType', {
+    sequelize.define('diets', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
         },
         name: {
             type: DataTypes.STRING,
-            unique: true                    
+            unique: true  
           }
     })
 };
