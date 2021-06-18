@@ -1,9 +1,11 @@
-import { ADD_RECIPES, ADD_DIETTYPE, ADD_DIET, ADD_POSTED } from "../actions/actionsName"
+import { ADD_RECIPES, ADD_DIETTYPE, ADD_DIET, ADD_POSTED, ADD_FILTERED, ADD_RECIPE } from "../actions/actionsName"
 
 const initialState = {
     recipes: [],
     diets: [],
-    postedRecipe:""
+    postedRecipe:"",
+    filtered: [],
+    recipe: {}
     
 }
 
@@ -21,17 +23,28 @@ export default function reducer (state=initialState, action){
                 diets: action.payload
             }
         }
-        case ADD_DIET: {
+        case ADD_DIET: {            
             return {
                 ...state,
                 diet: action.payload
             }
         }
-        case ADD_POSTED: {
-            console.log(action.payload)
+        case ADD_POSTED: {            
             return {
                 ...state,
                 postedRecipe: action.payload
+            }
+        }
+        case ADD_FILTERED: {
+            return {
+                ...state,
+                filtered: action.payload
+            }
+        }
+        case ADD_RECIPE: {            
+            return {
+                ...state,
+                recipe: action.payload
             }
         }
         default: {

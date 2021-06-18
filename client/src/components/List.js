@@ -1,24 +1,23 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import recipeByUser from "../images/recipeByUser.jpg"
+import { Link } from 'react-router-dom';
 
 export default function List (){
     
-    const state = useSelector(state => state.recipes)
-    
-    
+    const state = useSelector(state => state.filtered)    
     return (
         <div>
             <ul>
-         {state.map(function(recipe) {
-             
+         {state.map(function(recipe) {             
              return (
                  <li>
-                     <span>{recipe.title? recipe.title : recipe.name }</span>
-                     <p>
-                         {recipe.image? <img src={recipe.image}/> :
+                     <Link to={`/home/${recipe.id}`}>
+                     <span>{recipe.title? recipe.title : recipe.name}</span>
+                     </Link>
+                     <p> {recipe.image? <img src={recipe.image}/> :
                          <img src={recipeByUser}/> }</p>
-                     <div>{recipe.diets.map(function(diet) {                        
+                     <div>{recipe.diets?.map(function(diet) {                        
                          if(typeof diet === 'object'){
                              return (
                                  <label>{diet.name}</label>                            

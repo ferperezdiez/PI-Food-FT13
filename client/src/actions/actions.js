@@ -1,4 +1,4 @@
-import { ADD_RECIPES, ADD_DIETTYPE, ADD_POSTED } from "./actionsName";
+import { ADD_RECIPES, ADD_DIETTYPE, ADD_POSTED, ADD_FILTERED, ADD_RECIPE } from "./actionsName";
 import axios from 'axios'
 
 
@@ -29,7 +29,7 @@ export function addDietType () {
 
 export function findDietType (diet){
     return (dispatch) => {
-        axios.get(`http://localhost:3004/recipesWithDiets?diet=${diet}`)
+        axios.get(`http://localhost:3004/recipes?diet=${diet}`)
         .then(response => {
             dispatch({
                 type: ADD_RECIPES,
@@ -40,19 +40,57 @@ export function findDietType (diet){
 }
 
 export function postRecipe (form){
-
     return (dispatch) => {
         axios.post(`http://localhost:3004/recipes`, form)
-        .then((resolve) => {            
+        .then(() => {            
             dispatch({
                 type: ADD_POSTED,
-                payload: `La reseta ${form.name} fue publicada con exito`
+                payload: `La reseta "${form.name}" fue publicada con exito`
             })
         }).catch(e => {
             dispatch({
                 type: ADD_POSTED,
-                payload: `No fue posible publicar la reseta ${form.name}`
+                payload: `No fue posible publicar la reseta "${form.name}"`
             })
         });
+    }
+}
+
+
+export function getAll (){
+    return (dispatch) => {
+        axios.get(`http://localhost:3004/recipes/all`)
+        .then(response => {
+            dispatch({
+                type: ADD_RECIPES,
+                payload: response.data
+            })
+        })
+    }
+}
+
+export function addFiltered(filtered){    
+    return {        
+        type: ADD_FILTERED,
+        payload: filtered
+    }
+}
+
+export function addSorted(sorted){
+    return {
+        type: ADD_RECIPES,
+        payload: sorted
+    }
+}
+
+export function addRecipe(id){
+    return (dispatch) => {
+        axios.get(`http://localhost:3004/recipes/${id}`)
+            .then(response =>{                
+                dispatch({
+                    type: ADD_RECIPE,
+                    payload: response.data
+                })
+            })
     }
 }
