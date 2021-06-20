@@ -11,7 +11,8 @@ export default function List (){
             <ul>
          {state.map(function(recipe) {             
              return (
-                 <li>
+                 <div key={recipe.id}>
+                 <li >
                      <Link to={`/home/${recipe.id}`}>
                      <span>{recipe.title? recipe.title : recipe.name}</span>
                      </Link>
@@ -20,7 +21,7 @@ export default function List (){
                      <div>{recipe.diets?.map(function(diet) {                        
                          if(typeof diet === 'object'){
                              return (
-                                 <label>{diet.name}</label>                            
+                                 <label key={diet.name}>{diet.name}</label>                            
                               )                             
                         }
                         else {
@@ -32,6 +33,8 @@ export default function List (){
                         }
                      })}</div>
                  </li>
+                     
+                 </div>
              )
          })}
             </ul>

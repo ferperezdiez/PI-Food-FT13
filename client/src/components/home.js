@@ -17,7 +17,7 @@ export default function Home (){
     useEffect(() => {        
        dispatch(addDietType());      
        dispatch(getAll())           
-      },[])
+    },[])
    
     firstLoad() 
   

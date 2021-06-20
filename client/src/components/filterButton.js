@@ -17,7 +17,7 @@ export default function FilterButton() {
             <select onChange={handleChange}>
                 {diets.map(function(diet){
                     return(                                 
-                        <option type="Checkbox" value={diet.name}>{diet.name}</option>                   
+                        <option key={diet.id} type="Checkbox" value={diet.name}>{diet.name}</option>                   
                     )
                 })}                   
             </select>           
