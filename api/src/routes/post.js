@@ -17,7 +17,7 @@ router.post ('/recipes', (req, res, next) => {
    
         const createdRecipe = Recipe.create(recipe)
         .then(result => {
-            for (var i=0; i < req.body.diet.length; i++){
+            for (var i=0; i < req.body.diet.length; i++){                
             result.addDiets(diet[i], {through:'recipesDiet'})            
             }
         })

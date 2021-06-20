@@ -11,11 +11,12 @@ module.exports = (sequelize) => {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
-            primaryKey: true
+           
         },
         name: {
             type: DataTypes.STRING,
-            unique: true  
+            unique: true, 
+            primaryKey: true 
           }
     })
 };

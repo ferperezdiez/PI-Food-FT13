@@ -3,7 +3,7 @@ require('dotenv').config();
 const {Recipe, Diets} = require('../db');
 const axios = require('axios').default;
 const {v4: uuidv4} = require('uuid');
-const { Op } = require("sequelize")
+const { Op } = require("sequelize") 
 
 const {
     API_KEY
@@ -16,7 +16,8 @@ const router = Router();
 
 router.get('/recipes/all', (req, res, next) => {     
     const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
-    const myRecipies = Recipe.findAll()    
+    const myRecipies = Recipe.findAll({
+      include: Diets })    
         Promise.all([recipiesApy, myRecipies])
         .then(response => { 
             var  [recipiesApyResponse, myRecipiesResponse] = response                      
@@ -73,23 +74,15 @@ router.get('/recipes', (req, res, next) => {
         dietsDataResult.data.results.forEach(result => {          
         result.diets.forEach(result => {
           if (!dietss.includes(result)) {
-            dietss.push(result)
-        }
-      })
-    })
-    })    
-    .then(() => {      
+            dietss.push(result)}})})})    
+      .then(() => {      
       dietss.forEach(result => {      
       Diets.create({
-      name: result
-      })
-    })
-    })
-    .then(dietResult => {
+      name: result})})})
+      .then(dietResult => { 
       Diets.findAll().then(data => {         
       return res.send(data)})})
-    .catch((err) => next(err))
-    })
+    .catch((err) => next(err))})
 
       router.get ('/recipes/:id', (req, res) => {
         const {id} = req.params
