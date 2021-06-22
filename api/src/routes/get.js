@@ -14,19 +14,19 @@ const {
 
 const router = Router();
 
-router.get('/recipes/all', (req, res, next) => {     
-    const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
-    const myRecipies = Recipe.findAll({
-      include: Diets })    
-        Promise.all([recipiesApy, myRecipies])
-        .then(response => { 
-            var  [recipiesApyResponse, myRecipiesResponse] = response                      
-            var resultado = myRecipiesResponse.concat(recipiesApyResponse.data.results)                     
-            if(resultado.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
-            res.send(resultado)})
-        .catch((err) => next(err))    
+// router.get('/recipes/all', (req, res, next) => {     
+//     const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
+//     const myRecipies = Recipe.findAll({
+//       include: Diets })    
+//         Promise.all([recipiesApy, myRecipies])
+//         .then(response => { 
+//             var  [recipiesApyResponse, myRecipiesResponse] = response                      
+//             var resultado = myRecipiesResponse.concat(recipiesApyResponse.data.results)                     
+//             if(resultado.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
+//             res.send(resultado)})
+//         .catch((err) => next(err))    
     
-    });
+//     });
 
 router.get('/recipes', (req, res, next) => { 
 
@@ -59,30 +59,48 @@ router.get('/recipes', (req, res, next) => {
                 if(resultado2.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
                 res.send(resultado2)})
             .catch((err) => next(err))}
-    });    
+
+            else {
+              const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
+              const myRecipies = Recipe.findAll({
+                include: Diets
+              })
+              Promise.all([recipiesApy, myRecipies])
+                .then(response => {
+                  var [recipiesApyResponse, myRecipiesResponse] = response
+                  var resultado = myRecipiesResponse.concat(recipiesApyResponse.data.results)
+                  if (resultado.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
+                  res.status(200).send(resultado)
+                })
+                .catch((err) => next(err))}
+    });     
+
+
+  router.get('/types', (req, res, next) => {
+    Diets.findAll().then(result => {
+      if(result.length > 0) return res.send(result)
+      else {
+        const dietss = []
+          const dietsData = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
+          dietsData.then(data => {  
+            let dietsDataResult = data
+            dietsDataResult.data.results.forEach(result => {          
+            result.diets.forEach(result => {
+              if (!dietss.includes(result)) {
+                dietss.push(result)}})})})    
+          .then(() => {      
+          dietss.forEach(result => {      
+          Diets.create({
+          name: result})})})
+          .then(dietResult => { 
+          Diets.findAll().then(data => {         
+          return res.send(data)})})
+        .catch((err) => next(err))
+        
+      }
+    })
     
-
-
-    
-
-
-  router.get('/types', (req, res, next) => {      
-    const dietss = []
-      const dietsData = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
-      dietsData.then(data => {  
-        let dietsDataResult = data
-        dietsDataResult.data.results.forEach(result => {          
-        result.diets.forEach(result => {
-          if (!dietss.includes(result)) {
-            dietss.push(result)}})})})    
-      .then(() => {      
-      dietss.forEach(result => {      
-      Diets.create({
-      name: result})})})
-      .then(dietResult => { 
-      Diets.findAll().then(data => {         
-      return res.send(data)})})
-    .catch((err) => next(err))})
+  })
 
       router.get ('/recipes/:id', (req, res) => {
         const {id} = req.params

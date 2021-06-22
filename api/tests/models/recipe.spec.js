@@ -1,5 +1,6 @@
 const { Recipe, conn } = require('../../src/db.js');
 const { expect } = require('chai');
+const {v4: uuidv4} = require('uuid');
 
 describe('Recipe model', () => {
   before(() => conn.authenticate()
@@ -15,7 +16,11 @@ describe('Recipe model', () => {
           .catch(() => done());
       });
       it('should work when its a valid name', () => {
-        Recipe.create({ name: 'Milanesa a la napolitana' });
+        Recipe.create({ 
+          name: 'Milanesa a la napolitana', 
+          resume: 'llamas al delivery y la acompañas com papas fritas. También del delivery',
+          id: uuidv4()
+         });
       });
     });
   });

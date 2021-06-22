@@ -9,7 +9,7 @@ router.post ('/recipes', (req, res, next) => {
     const recipe = {...req.body, id};
     const {diet} = req.body
     if(!req.body.name || !req.body.resume) {
-        return res.send({ 
+        return res.status(404).send({ 
                  
             message: "'nombre' y 'resumen del plato' son obligatorios",
         });
