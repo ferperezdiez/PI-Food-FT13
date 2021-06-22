@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { postRecipe } from "../actions/actions";
 import { useEffect } from 'react';
 import { addDietType } from "../actions/actions";
+import { Link } from "react-router-dom"
 
 export default function Form (){
 
@@ -13,15 +14,6 @@ export default function Form (){
     const diets = useSelector(state => state.diets)
     const posted = useSelector(state => state.postedRecipe)
     
-    function findID (diets) {
-        let id = 1
-        var indexDiet = []
-        for(var i=0; i < diets.length; i++){
-            indexDiet.push(id)
-            id = id+1
-        }
-        return indexDiet
-    }    
     const dispatch = useDispatch()
     const [recipesState, SetRecipesState] = useState({
         name: '',
@@ -31,44 +23,58 @@ export default function Form (){
         analyzedInstructions: '',
         diet: []
     })
-function handleChange(e){
-    if(e.target.name === "diet"){
-        SetRecipesState({...recipesState, diet: [...recipesState.diet, e.target.value]})    
-    }
-    else SetRecipesState({...recipesState, [e.target.name]: e.target.value})
-}
+    const [spoonScoreErr, setSpoonScoreErr] = React.useState('')
+    const [healthScoreErr, setHealthScoreErr] = React.useState('')
 
-function handleSubmit (e){   
-    e.preventDefault()    
+    function handleChange(e){
+        if(e.target.name === "diet"){
+            SetRecipesState({...recipesState, diet: [...recipesState.diet, e.target.value]})    
+        }
+        else SetRecipesState({...recipesState, [e.target.name]: e.target.value})
+    }
+
+    function handleSubmit (e){   
+    e.preventDefault()
     dispatch(postRecipe(recipesState))
     
     SetRecipesState({
         name: '',
         resume: '',
-        spoonacularScore: '',
+        spoonacularScore: '', 
         healthScore: '',
         analyzedInstructions: '',
         diet: []
     })
 } 
 
-    function changeToId (diets){
-        let numberDiet = findID (diets)
-        return SetRecipesState({...recipesState, diet: ["algo"]}), console.log(recipesState.diet)         
+    function validateNumber(e) {
+    var val = e.target.value
+    if(!/[0-9]/.test(val)) {
+        if([e.target.name] == 'spoonacularScore') setSpoonScoreErr('should be a number')          
+        if([e.target.name] == 'healthScore') setHealthScoreErr('should be a number');
     }
+     else {
+        if([e.target.name] == 'spoonacularScore') setSpoonScoreErr('')
+        if([e.target.name] == 'healthScore') setHealthScoreErr('')
+    }
+    SetRecipesState({...recipesState, [e.target.name]: e.target.value});
+   
+  }
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <input name="name" placeholder="Nombre de tu receta" onChange={handleChange} value={recipesState.name}></input>
                 <textarea name="resume" placeholder="Descripción de tu receta" onChange={handleChange} value={recipesState.resume}></textarea>
-                <input name="spoonacularScore" placeholder="Puntaje de tu receta" onChange={handleChange} value={recipesState.spoonacularScore}></input>
-                <input name="healthScore" placeholder="Nivel de 'comida saludable'" onChange={handleChange} value={recipesState.healthScore}></input>
+                <input name="spoonacularScore" placeholder="Puntaje de tu receta" onChange={(e) => validateNumber(e)} value={recipesState.spoonacularScore}></input>
+                {!spoonScoreErr ? null : <span>{spoonScoreErr}</span>}
+                <input name="healthScore" placeholder="Nivel de 'comida saludable'" onChange={(e) => validateNumber(e)} value={recipesState.healthScore}></input>
+                {!healthScoreErr ? null : <span>{healthScoreErr}</span>}
                 <textarea name="analyzedInstructions" placeholder="Instrucciones" onChange={handleChange} value={recipesState.analyzedInstructions}></textarea>
                 <div>
                 {diets.map(diet =>{
                     return(
-                        <div>
+                        <div key={diet.id}>
                             <label>{diet.name}</label>
                             <input name="diet" type="checkBox" onChange={handleChange} value={diet.name}></input>
                         </div>                       
@@ -78,6 +84,9 @@ function handleSubmit (e){
                 <button>Submit</button> 
             </form>
             <div>{posted}</div>
+            <Link to='/home'>
+                <button>Volver</button>
+            </Link>
         </div>
     )
 }

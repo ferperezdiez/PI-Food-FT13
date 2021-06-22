@@ -42,7 +42,8 @@ export function findDietType (diet){
 export function postRecipe (form){
     return (dispatch) => {
         axios.post(`http://localhost:3004/recipes`, form)
-        .then(() => {            
+        .then((result) => {    
+                    
             dispatch({
                 type: ADD_POSTED,
                 payload: `La reseta "${form.name}" fue publicada con exito`
@@ -59,7 +60,7 @@ export function postRecipe (form){
 
 export function getAll (){
     return (dispatch) => {
-        axios.get(`http://localhost:3004/recipes/all`)
+        axios.get(`http://localhost:3004/recipes`)
         .then(response => {
             dispatch({
                 type: ADD_RECIPES,

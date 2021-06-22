@@ -1,6 +1,8 @@
-body {
-    
-    background-image: url("../images/landingPage.jpg");
+.container { 
+    margin: 0 auto;
+    background: url("../images/landingPage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;    
     background-repeat: no-repeat;
     background-size:cover
 }
