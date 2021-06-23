@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { findDietType } from '../actions/actions';
+import "./filterButton.css"
 
 export default function FilterButton() {
     const diets = useSelector(state => state.diets)
@@ -13,6 +14,8 @@ export default function FilterButton() {
     }
 
     return (
+        <div className="box3">
+
         <form>
             <select onChange={handleChange}>
                 {diets.map(function(diet){
@@ -22,5 +25,6 @@ export default function FilterButton() {
                 })}                   
             </select>           
         </form>
+        </div>
     )
 }

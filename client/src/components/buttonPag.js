@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFiltered } from "../actions/actions";
+import "./buttonPage.css";
 
 
 export function ButtonPag(){
@@ -29,9 +30,9 @@ export function ButtonPag(){
 
     
     return (
-        <div>
-            <button onClick={prev}>prev</button>
-            <button onClick={next}>next</button>
+        <div >
+            <button className="sort" onClick={prev}>prev</button>
+            <button className="sort" onClick={next}>next</button>
         </div>
     )
 }

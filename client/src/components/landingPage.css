@@ -1,22 +1,38 @@
-.container { 
+
+.container  { 
     margin: 0 auto;
-    background: url("../images/landingPage.jpg");
+    background-image: url("../images/landingPage.jpg");
     background-repeat: no-repeat;
-    background-size: cover;    
-    background-repeat: no-repeat;
-    background-size:cover
+    background-size: cover;
+    height:100vh;
+    
+
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button {
-    color: rgb(255, 255, 255);
-    display: flex;
-    text-align-last: center;
     position: absolute;
-    left: 200px;
-    bottom: 270px;
-    border-radius: 25%;
-    height: 40px;
-    font-size: 25px;
-    font-family: verdana;
-    background-color: darkolivegreen;
+    top: 50%;
+    right: 70%;
+
+    display: block;
+    background-color: #eb7700;
+    padding: 10px 45px 10px 45px;
+    border: 0;
+    font-size: 1em;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    border-radius: 10px;
+    margin: auto;
+    justify-self: center;
+    align-self: center;
+        
+    }
+.button:hover {
+    background-color: #046193; ;
 }

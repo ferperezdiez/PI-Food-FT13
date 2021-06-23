@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addSorted, addFiltered } from "../actions/actions";
+import './buttonSort.css'
 
 
 export default function ButtonSort (){
@@ -55,9 +56,9 @@ function descendent (){
 }
    
     return (
-        <div>
-            <button onClick={ascendent}>Sort ⬆️</button>
-            <button onClick={descendent}>Sort ⬇️</button>
+        <div >
+            <button className="sort" onClick={ascendent}>Sort ⬆️</button>
+            <button className="sort" onClick={descendent}>Sort ⬇️</button>
         </div>
     )
 

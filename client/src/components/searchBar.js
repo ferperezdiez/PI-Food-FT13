@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from "react-redux";
 import {findRecipe} from "../actions/actions";
+import "./searchBar.css"
 
 function SearchBar (props) {
 
@@ -17,7 +18,7 @@ function SearchBar (props) {
     }
 
     return (
-        <div>
+        <div className="box2">
             <form onSubmit={handleSubmit}>
             <input name="name" placeholder="ingrese el nombre de la receta" onChange={handleChange} value={inputState}/>
             <button type="submit">submit</button>

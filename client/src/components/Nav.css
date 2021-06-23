@@ -1,0 +1,38 @@
+.headerContainer{
+ 
+  width: auto;
+  height: 50px;
+  margin: 0 auto;
+  
+}
+		
+.nav-container{
+  padding: 10px;
+  width: auto;
+  
+  margin: 0 auto;
+  
+
+}
+
+form input{
+  margin-bottom: 15px;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  padding: 10px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; 
+  border: none; 
+  color: #525c66; 
+  font-size: 1em;
+  resize: horizontal; 
+    border-radius: 5px;
+}
+
+
+
+.box1{
+  margin:0px 0px 0px 0px;
+  width: 33%;
+  float: left;
+}

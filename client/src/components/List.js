@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import recipeByUser from "../images/recipeByUser.jpg"
 import { Link } from 'react-router-dom';
+import './List.css'
 
 export default function List (){
     

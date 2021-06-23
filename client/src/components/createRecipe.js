@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { postRecipe } from "../actions/actions";
 import { useEffect } from 'react';
 import { addDietType } from "../actions/actions";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import './createRecipe.css'
 
 export default function Form (){
 
@@ -62,7 +63,7 @@ export default function Form (){
   }
 
     return (
-        <div>
+        <div className="fondo">
             <form onSubmit={handleSubmit}>
                 <input name="name" placeholder="Nombre de tu receta" onChange={handleChange} value={recipesState.name}></input>
                 <textarea name="resume" placeholder="Descripción de tu receta" onChange={handleChange} value={recipesState.resume}></textarea>

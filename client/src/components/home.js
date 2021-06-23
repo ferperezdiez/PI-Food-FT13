@@ -6,12 +6,13 @@ import FilterButton from './filterButton';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {addDietType, getAll } from '../actions/actions.js';
-import s from './home.module.css'
 import { ButtonPag } from './buttonPag';
 import firstLoad from './firstLoad';
 import ButtonSort from './buttonSort';
 import { addFiltered } from "../actions/actions";
 import Nav from './Nav';
+import './home.css'
+
 
 export default function Home (){
 
@@ -28,12 +29,14 @@ export default function Home (){
   
 
     return(
-        <div className={s.div}>
-            <div className={s.div}>
+        <div>
+            <div>
                 <Nav/>               
                 <Link to="/create">
+                <div className="box4">
                 <button>Crea una receta</button>
-                </Link>               
+                </div>
+               </Link>               
                 <List/>                
             </div>
         </div>

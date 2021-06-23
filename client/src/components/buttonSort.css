@@ -1,0 +1,53 @@
+form{
+    padding: 10px;
+    max-width: 400px;
+    background-color: #E7E7E7;
+    margin: 0 auto;
+              border-radius: 10px;
+  }
+  
+  form input, form textarea, select{
+    margin-bottom: 15px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; 
+    border: none; 
+    color: #525c66; 
+    font-size: 1em;
+    resize: horizontal; 
+          border-radius: 5px;
+  }
+  
+  form button {
+      display: block;
+      background-color: #eb7700;
+      padding: 10px 45px 10px 45px;
+      border: 0;
+      font-size: 1em;
+      color: white;
+      /* font-family: "Roboto", sans-serif; */
+      border-radius: 10px;
+  }
+  form button:hover{
+      background-color: #046193;
+  }
+  textarea { resize: none; }
+          
+          input[type="checkbox" i] {
+      display: inline-block;
+      width: 35px;
+  }
+  .sort button  {
+    margin: 0px 13px 0px 0px;
+    width: 168px;
+      float:left;
+
+  }
+  .sort  {
+    margin: 13px 29px 0px 5px;
+    width: 168px;
+      float:left;
+
+  }
