@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import { connect } from "react-redux";
-import {findRecipe} from "../actions/actions";
+import {findRecipe, reset} from "../actions/actions";
 import "./searchBar.css"
+
 
 function SearchBar (props) {
 
@@ -13,12 +14,14 @@ function SearchBar (props) {
 
     function handleSubmit(e){
         e.preventDefault()
+        props.reset()
         props.findRecipe(inputState)
         setInput('')
     }
 
     return (
         <div className="box2">
+            {props.error}            
             <form onSubmit={handleSubmit}>
             <input name="name" placeholder="ingrese el nombre de la receta" onChange={handleChange} value={inputState}/>
             <button type="submit">submit</button>
@@ -27,10 +30,18 @@ function SearchBar (props) {
     )
 }
 
-function mapDispatchToProps(dispatch){
-    return {
-        findRecipe: name => dispatch(findRecipe(name))
+function mapStateToProps(state){
+    return{
+        error: state.searchError,
+        recipe: state.recipe
     }
 }
 
-export default connect(null, mapDispatchToProps)(SearchBar)
+function mapDispatchToProps(dispatch){
+    return {
+        findRecipe: name => dispatch(findRecipe(name)),
+        reset: () => dispatch(reset())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)

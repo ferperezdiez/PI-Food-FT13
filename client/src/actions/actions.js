@@ -1,4 +1,4 @@
-import { ADD_RECIPES, ADD_DIETTYPE, ADD_POSTED, ADD_FILTERED, ADD_RECIPE } from "./actionsName";
+import { ADD_RECIPES, ADD_DIETTYPE, ADD_POSTED, ADD_FILTERED, ADD_RECIPE, ADD_MESSAGE, RESET_MESSAGE } from "./actionsName";
 import axios from 'axios'
 
 
@@ -11,6 +11,19 @@ export function findRecipe (name){
                 payload: response.data
             })
         })
+        .catch(e => {
+            dispatch({
+                type: ADD_MESSAGE,
+                payload: `No se encontró una receta con ese nombre`
+            })
+        });
+    }
+}
+
+export function reset () {
+    return{
+        type: RESET_MESSAGE,
+       
     }
 }
 

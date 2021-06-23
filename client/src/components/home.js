@@ -22,12 +22,11 @@ export default function Home (){
     },[])
     useEffect(() => {              
         dispatch(getAll())
-     },[])
+    },[])
+    firstLoad()       
     
     
-    firstLoad() 
-  
-
+    
     return(
         <div>
             <div>
@@ -41,4 +40,6 @@ export default function Home (){
             </div>
         </div>
     )
+    
 }
+    

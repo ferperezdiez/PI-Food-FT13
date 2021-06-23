@@ -5,30 +5,31 @@ import { Link } from 'react-router-dom';
 import './List.css'
 
 export default function List (){
-    
+    var countId = 0;
     const state = useSelector(state => state.filtered)    
     return (
         <div>
             <ul>
-         {state.map(function(recipe) {             
+         {state.map(function(recipe) {                        
              return (
-                 <div key={recipe.id}>
-                 <li >
+                 <div >
+                 <li key={recipe.id}>
                      <Link to={`/home/${recipe.id}`}>
                      <span>{recipe.title? recipe.title : recipe.name}</span>
                      </Link>
                      <p> {recipe.image? <img src={recipe.image}/> :
                          <img src={recipeByUser}/> }</p>
-                     <div>{recipe.diets?.map(function(diet) {                        
-                         if(typeof diet === 'object'){
+                     <div>{recipe.diets?.map(function(diet) {
+                         countId++                        
+                         if(typeof diet === 'object'){                             
                              return (
-                                 <label key={diet.name}>{diet.name}</label>                            
+                                 <label key={diet.name + countId}>{diet.name}</label>                            
                               )                             
                         }
-                        else {
+                        else {                            
                             return(
                                 <div>
-                                    <label>{diet}</label>                                    
+                                    <label key={diet + countId}>{diet}</label>                                    
                                 </div>
                             )
                         }

@@ -1,12 +1,12 @@
-import { ADD_RECIPES, ADD_DIETTYPE, ADD_DIET, ADD_POSTED, ADD_FILTERED, ADD_RECIPE } from "../actions/actionsName"
+import { ADD_RECIPES, ADD_DIETTYPE, ADD_DIET, ADD_POSTED, ADD_FILTERED, ADD_RECIPE, ADD_MESSAGE, RESET_MESSAGE } from "../actions/actionsName"
 
 const initialState = {
     recipes: [],
     diets: [],
     postedRecipe:"",
     filtered: [],
-    recipe: {}
-    
+    recipe: {},
+    searchError: ""
 }
 
 export default function reducer (state=initialState, action){
@@ -35,6 +35,12 @@ export default function reducer (state=initialState, action){
                 postedRecipe: action.payload
             }
         }
+        case ADD_MESSAGE: {
+            return {
+                ...state,
+                searchError: action.payload
+            }
+        }
         case ADD_FILTERED: {
             return {
                 ...state,
@@ -47,6 +53,11 @@ export default function reducer (state=initialState, action){
                 recipe: action.payload
             }
         }
+        case RESET_MESSAGE:
+            return {
+                ...state,
+                searchError: ""
+            }
         default: {
             return state
         }
