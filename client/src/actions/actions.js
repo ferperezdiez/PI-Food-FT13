@@ -59,12 +59,12 @@ export function postRecipe (form){
                     
             dispatch({
                 type: ADD_POSTED,
-                payload: `La reseta "${form.name}" fue publicada con exito`
+                payload: `La receta "${form.name}" fue publicada con exito`
             })
         }).catch(e => {
             dispatch({
                 type: ADD_POSTED,
-                payload: `No fue posible publicar la reseta "${form.name}"`
+                payload: `No fue posible publicar la receta "${form.name}"`
             })
         });
     }

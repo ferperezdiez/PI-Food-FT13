@@ -47,3 +47,9 @@ textarea { resize: none; }
     display: inline-block;
     width: 35px;
 }
+
+.buttonRefresh {
+margin: 13px 45px 10px 45px;
+margin: 7px auto 0px;
+
+}

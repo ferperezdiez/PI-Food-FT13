@@ -23,13 +23,11 @@ export default function Home (){
     useEffect(() => {              
         dispatch(getAll())
     },[])
-    firstLoad()       
-    
-    
-    
+   firstLoad()      
+        
     return(
         <div>
-            <div>
+            <div>                
                 <Nav/>               
                 <Link to="/create">
                 <div className="box4">

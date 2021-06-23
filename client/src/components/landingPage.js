@@ -4,8 +4,9 @@ import firstLoad from './firstLoad';
 import './landingPage.css'
 
 
-export default function LandingPage() {
-   
+export default function LandingPage() {   
+    
+    
     return (
         <div className="container">
             <div className="button-container">

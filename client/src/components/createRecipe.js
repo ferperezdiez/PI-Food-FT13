@@ -33,9 +33,13 @@ export default function Form (){
         }
         else SetRecipesState({...recipesState, [e.target.name]: e.target.value})
     }
-
+    
+    function refresh(){
+    return 'done'
+    }
+    
     function handleSubmit (e){   
-    e.preventDefault()
+        e.preventDefault()
     dispatch(postRecipe(recipesState))
     
     SetRecipesState({
@@ -84,7 +88,10 @@ export default function Form (){
                 </div>
                 <button>Submit</button> 
             </form>
-            <div>{posted}</div>
+            <div>{posted}</div>            
+            {posted.length > 1 && <form onSubmit={refresh}>
+                <button className="buttonRefresh">Ingresar otra receta</button>
+            </form>}
             <Link to='/home'>
                 <button>Volver</button>
             </Link>
