@@ -14,20 +14,6 @@ const {
 
 const router = Router();
 
-// router.get('/recipes/all', (req, res, next) => {     
-//     const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
-//     const myRecipies = Recipe.findAll({
-//       include: Diets })    
-//         Promise.all([recipiesApy, myRecipies])
-//         .then(response => { 
-//             var  [recipiesApyResponse, myRecipiesResponse] = response                      
-//             var resultado = myRecipiesResponse.concat(recipiesApyResponse.data.results)                     
-//             if(resultado.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
-//             res.send(resultado)})
-//         .catch((err) => next(err))    
-    
-//     });
-
 router.get('/recipes', (req, res, next) => { 
 
   if(req.query.diet){
@@ -58,7 +44,7 @@ router.get('/recipes', (req, res, next) => {
                 var resultado2 = resultado
                 if(resultado2.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
                 res.send(resultado2)})
-            .catch((err) => next(err))}
+            .catch((err) => res.status(404))}
 
             else {
               const recipiesApy = axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)
