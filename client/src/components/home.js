@@ -15,6 +15,7 @@ import './home.css'
 
 
 export default function Home (){
+    
 
     const dispatch = useDispatch()
     useEffect(() => {        
@@ -23,7 +24,8 @@ export default function Home (){
     useEffect(() => {              
         dispatch(getAll())
     },[])
-   firstLoad()      
+    
+    firstLoad()     
         
     return(
         <div>
@@ -31,7 +33,7 @@ export default function Home (){
                 <Nav/>               
                 <Link to="/create">
                 <div className="box4">
-                <button>Crea una receta</button>
+                <button className="buttonCreate">crea una receta</button>
                 </div>
                </Link>               
                 <List/>                

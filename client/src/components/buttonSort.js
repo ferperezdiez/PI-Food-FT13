@@ -56,9 +56,9 @@ function descendent (){
 }
    
     return (
-        <div >
-            <button className="sort" onClick={ascendent}>Sort ⬆️</button>
-            <button className="sort" onClick={descendent}>Sort ⬇️</button>
+        <div className="sortStyle">
+            <button className="sort" onClick={descendent}>sort a/z </button>
+            <button className="sort" onClick={ascendent}>sort z/a</button>
         </div>
     )
 
