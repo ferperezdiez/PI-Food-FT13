@@ -13,11 +13,10 @@ router.post ('/recipes', (req, res, next) => {
                  
             message: "'nombre' y 'resumen del plato' son obligatorios",
         });
-    }
-   
+    }   
         const createdRecipe = Recipe.create(recipe)
         .then(result => {
-            for (var i=0; i < req.body.diet.length; i++){                
+             for (var i=0; i < req.body.diet.length; i++){                
             result.addDiets(diet[i], {through:'recipesDiet'})            
             }
         })
