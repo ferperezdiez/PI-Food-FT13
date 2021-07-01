@@ -1,6 +1,14 @@
-const {Recipe, Diets} = require('../db');
+const {Recipe, Diets, UserData} = require('../db');
 const {v4: uuidv4} = require('uuid');
 const { Router } = require('express');
+
+/* -- A través de esta ruta se realiza se realiza el posteo en base de datos de
+una receta agregada por un usario asociándola con una o vario tipos de dietas seleccionadas 
+desde el front.
+La rutas comentadas son una versión utilizando promesas.
+
+*/
+
 
 const router = Router();
 
@@ -61,12 +69,12 @@ const router = Router();
         catch(error){
             next(error)
         }
-       
-            
-  
   })
 
+  
+  
 
+  
 
 
 module.exports = router;

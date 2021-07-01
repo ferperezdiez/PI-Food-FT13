@@ -10,11 +10,17 @@ const {
 } = process.env;
 
 
-// importar modelos
+
 
 const router = Router();
 
-// GET WITH PROMISES
+/* -- En esta ruta se obtiene un listado de recetas obtenidas tanto de la API 
+como de la base de datos filtradas por tipo de dieta, palabra clave o búsqueda general.
+La rutas comentadas son una versión utilizando promesas.
+
+*/
+
+// GET con promesas
 // router.get('/recipes', (req, res, next) => {
 
 //   if (req.query.diet) {
@@ -259,12 +265,5 @@ router.get('/recipes/:id', async (req, res, next) => {
     }    
   }
 })
-
-
-
-
-
-
-
 
 module.exports = router;

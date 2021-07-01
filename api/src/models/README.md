@@ -1,0 +1,1 @@
+En esta carpeta se define el modelo Recipe y una tabla asociada de uno a muchos definida como Diets. 
