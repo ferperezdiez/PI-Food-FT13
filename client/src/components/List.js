@@ -6,7 +6,13 @@ import './List.css'
 import firstLoad from './firstLoad';
 
 
-export default function List (){   
+export default function List (){ 
+    
+    /*
+Entre los requerimientos provistos, estaba la de crear un modelo Recipe que debía contener 
+una propiedad "nombre", mientras que de la API el nombre de la receta llega como "title".
+Este componente se encarga de renderizar 9 recetas filtradas según indicación del usuario.
+*/
 
     var countId = 0;
     const state = useSelector(state => state.filtered)    

@@ -5,6 +5,12 @@ import { findDietType } from '../actions/actions';
 import "./filterButton.css"
 
 export default function FilterButton() {
+
+    /*
+    Componente encargado de renderizar un selector desplegable para filtrar los resultados
+    según alguna dieta en particular.
+    */
+
     const diets = useSelector(state => state.diets)
     const dispatch = useDispatch()
 

@@ -8,6 +8,12 @@ import './createRecipe.css'
 
 export default function Form (){
 
+    /*
+    Componente encargado de la creación de una receta nueva.
+    Cuenta con un componente controlado y se renderiza un mensaje de confirmación
+    o de error según el caso.
+    */
+
     useEffect(() => {
         dispatch(addDietType());
     }, [])

@@ -1,12 +1,12 @@
 import { ADD_RECIPES, ADD_DIETTYPE, ADD_DIET, ADD_POSTED, ADD_FILTERED, ADD_RECIPE, ADD_MESSAGE, RESET_MESSAGE } from "../actions/actionsName"
 
 const initialState = {
-    recipes: [],
-    diets: [],
-    postedRecipe:"",
-    filtered: [],
-    recipe: {},
-    searchError: ""
+    recipes: [], // Propiedad que recibe de API un listado de recetas
+    diets: [], // Propiedad que carga los tipos de recetas
+    postedRecipe:"", // propiedad que recibe un mensaje de confirmación o rechazo de un post.
+    filtered: [], // propiedad que contiene 9 recetas filtradas.
+    recipe: {}, // propiedad que contiene una receta seleccionada por el uruario.
+    searchError: "" // Propiedad que contiene un mensaje de error de la búsqueda por key en API
 }
 
 export default function reducer (state=initialState, action){

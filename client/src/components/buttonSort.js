@@ -7,6 +7,13 @@ import './buttonSort.css'
 export default function ButtonSort (){
 const state = useSelector(state => state.recipes)
 
+/*
+Entre los requerimientos provistos, estaba la de crear un modelo Recipe que debía contener 
+una propiedad "nombre", mientras que de la API el nombre de la receta llega como "title".
+En este componente se ordena el listado a renderizar, tanto de manera ascendente 
+como descendente.
+*/
+
 const dispatch = useDispatch()
 
 function ascendent (){

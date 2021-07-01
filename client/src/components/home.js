@@ -11,7 +11,8 @@ import firstLoad from './firstLoad';
 import ButtonSort from './buttonSort';
 import { addFiltered } from "../actions/actions";
 import Nav from './Nav';
-import './home.css'
+import './home.css';
+
 
 
 export default function Home (){
@@ -35,7 +36,7 @@ export default function Home (){
                 <div className="box4">
                 <button className="buttonCreate">crea una receta</button>
                 </div>
-               </Link>               
+               </Link>                
                 <List/>                
             </div>
         </div>
