@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addFiltered } from "../actions/actions";
+import { addFiltered } from "../../actions/actions";
 import "./buttonPage.css";
 
 /*
@@ -8,7 +8,7 @@ Como parte de los requerimientos estaba la limitación de utilizar librerías de
 En este componente se realiza esa funcionalidad.
 */
 
-export function ButtonPag(){
+ export default function ButtonPag(){
     var page = 0
     var state = useSelector(state => state.recipes)
     const dispatch = useDispatch()

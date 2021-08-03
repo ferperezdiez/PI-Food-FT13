@@ -1,11 +1,11 @@
 import React from 'react';
-import SearchBar from './searchBar';
-import FilterButton from './filterButton';
-import { ButtonPag } from './buttonPag';
-import ButtonSort from './buttonSort';
+import SearchBar from '../searchBar/searchBar';
+import FilterButton from '../selectDiet/filterButton.js';
+import ButtonPag from '../pagination/buttonPag.js';
+import ButtonSort from '../toSort/buttonSort.js';
 import './Nav.css'
 
-export default function Nav (){
+export default function Nav (){ 
     return (
         <div className="nav-container">
             <div className="headerContainer">

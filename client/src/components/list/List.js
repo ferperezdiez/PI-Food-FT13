@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import recipeByUser from "../images/recipeByUser.jpg"
+import recipeByUser from "../../images/recipeByUser.jpg"
 import { Link } from 'react-router-dom';
 import './List.css'
-import firstLoad from './firstLoad';
+import firstLoad from '../firstLoad';
 
 
 export default function List (){ 
@@ -24,7 +24,7 @@ Este componente se encarga de renderizar 9 recetas filtradas según indicación 
                  <div >
                  <li key={recipe.id}>
                      <Link to={`/home/${recipe.id}`}>
-                     <span>{recipe.title? recipe.title : recipe.name}</span>
+                     <span>{recipe.title}</span>
                      </Link>
                      <p> {recipe.image? <img src={recipe.image}/> :
                          <img src={recipeByUser}/> }</p>

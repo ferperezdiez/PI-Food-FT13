@@ -1,7 +1,7 @@
 import './App.css'; 
-import LandingPage from './components/landingPage';
-import Home from './components/home';
-import Form from './components/createRecipe';
+import LandingPage from './components/landing/landingPage';
+import Home from './components/home/home';
+import Form from './components/createRecipe/createRecipe';
 import { Route } from "react-router-dom";
 import RecipeDetail from './components/recipeDetail';
 

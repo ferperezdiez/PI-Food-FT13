@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { connect } from "react-redux";
-import {findRecipe, reset} from "../actions/actions";
+import {findRecipe, reset} from "../../actions/actions";
 import "./searchBar.css"
 
 

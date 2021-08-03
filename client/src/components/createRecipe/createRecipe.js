@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { postRecipe } from "../actions/actions";
+import { postRecipe } from "../../actions/actions";
 import { useEffect } from 'react';
-import { addDietType } from "../actions/actions";
+import { addDietType } from "../../actions/actions";
 import { Link } from "react-router-dom";
 import './createRecipe.css'
 
@@ -49,7 +49,7 @@ export default function Form (){
     dispatch(postRecipe(recipesState))
     
     SetRecipesState({
-        name: '',
+        title: '',
         resume: '',
         spoonacularScore: '', 
         healthScore: '',
@@ -75,7 +75,7 @@ export default function Form (){
     return (
         <div className="fondo">
             <form onSubmit={handleSubmit}>
-                <input name="name" placeholder="Nombre de tu receta" onChange={handleChange} value={recipesState.name}></input>
+                <input name="title" placeholder="Nombre de tu receta" onChange={handleChange} value={recipesState.name}></input>
                 <textarea name="resume" placeholder="Descripción de tu receta" onChange={handleChange} value={recipesState.resume}></textarea>
                 <input name="spoonacularScore" placeholder="Puntaje de tu receta" onChange={(e) => validateNumber(e)} value={recipesState.spoonacularScore}></input>
                 {!spoonScoreErr ? null : <span>{spoonScoreErr}</span>}

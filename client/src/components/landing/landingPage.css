@@ -1,7 +1,7 @@
 
 .container  { 
     margin: 0 auto;
-    background-image: url("../images/landingPage.jpg");
+    background-image: url("../../images/landingPage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height:100vh;

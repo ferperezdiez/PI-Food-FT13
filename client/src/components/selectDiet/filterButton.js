@@ -1,15 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { findDietType } from '../actions/actions';
+import { findDietType } from '../../actions/actions';
 import "./filterButton.css"
 
 export default function FilterButton() {
-
-    /*
-    Componente encargado de renderizar un selector desplegable para filtrar los resultados
-    según alguna dieta en particular.
-    */
+ 
 
     const diets = useSelector(state => state.diets)
     const dispatch = useDispatch()

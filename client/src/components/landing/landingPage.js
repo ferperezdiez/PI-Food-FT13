@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import firstLoad from './firstLoad';
+import firstLoad from '../firstLoad';
 import './landingPage.css'
 import { useState } from 'react';
 import axios from 'axios';
