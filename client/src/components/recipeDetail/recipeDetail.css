@@ -1,0 +1,54 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #390f61; 
+}
+
+
+.paragraph-detail{
+ 
+    background-color: #FAEBD7;
+    margin: 0px 67px 0px 67px;
+    
+}
+.label{
+    color: #a7824b;
+    display: inline-block;
+    background-color: burlywood;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 2px 6px;
+    font-size: 18px; 
+    border-radius: 22px;
+}
+ 
+
+.summaryStyle {
+    margin-bottom: 45px; 
+    padding: 25px 0px 42px 0px;
+    line-height:200%;
+    background-color: #FAEBD7;
+}
+
+.summaryStyle a {
+    color: #390f61;
+    text-decoration: none;
+    
+}
+
+.instructionsRecipe {
+    min-height: 161px;
+
+}
+
+.scoreRecipe {
+    width: 100%;
+}
+
+.ulContainer {
+   display: ruby-base-container;
+   justify-content:space-between;
+    width: 100%;
+    margin: 0px 0px 0px 50px;
+
+   
+}

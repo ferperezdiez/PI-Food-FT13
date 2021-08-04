@@ -3,7 +3,7 @@ import LandingPage from './components/landing/landingPage';
 import Home from './components/home/home';
 import Form from './components/createRecipe/createRecipe';
 import { Route } from "react-router-dom";
-import RecipeDetail from './components/recipeDetail';
+import RecipeDetail from './components/recipeDetail/recipeDetail';
 
 
 function App() {

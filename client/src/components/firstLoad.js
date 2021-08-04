@@ -7,7 +7,7 @@ Componente encargado de realizar una primera petición a API para renderizar
 al ingresar al Home un listado de recetas
 */
 
-export default function firstLoad(){  
+export default function FirstLoad(){  
     var state = useSelector(state => state.recipes)
     const dispatch = useDispatch()    
     if(state.length < 9) return dispatch(addFiltered(state))

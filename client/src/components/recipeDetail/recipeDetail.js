@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { addRecipe } from '../actions/actions';
+import { addRecipe } from '../../actions/actions';
 import {Link} from "react-router-dom"
 import './recipeDetail.css'
 
 export default function RecipeDetail(props) {
-
+ 
     const [idState, setIdState] = useState("")
     const dispatch = useDispatch()
 
@@ -22,10 +22,12 @@ export default function RecipeDetail(props) {
      }
     console.log(state.diets)
     return (
-        <div>            
-            <h1>{state.title? state.title : state.name}</h1>
-            <h4 className="summaryStyle" dangerouslySetInnerHTML={summary()} ></h4>
-            Instructions:
+        <div className="container-detail">            
+            <h1 className="title-detail">{state.title? state.title : state.name}</h1>
+            <div className="paragraph-detail">
+                <h4 className="summaryStyle" dangerouslySetInnerHTML={summary()} ></h4>
+            </div> 
+            <label className="label">Instructions:</label>
             <div>{state.title?
              <ul className="ulContainer">
                 {state.analyzedInstructions[0].steps.map(instruction => {                    
@@ -34,13 +36,13 @@ export default function RecipeDetail(props) {
             </ul>
             : <p>{state.analyzedInstructions}</p>}
             <div className="box5">
-            <h4>HealthScore:{state.healthScore}</h4>
-            <h4 className="scoreRecipe">Score:{state.spoonacularScore}</h4>
-            <div>{state.diets?.map(diet => {
+            <h4 className="label">HealthScore:{state.healthScore}</h4>
+            <h4 className="label">Score:{state.spoonacularScore}</h4>
+            <div className="list-container">{state.diets?.map(diet => {
                 if(diet.name){
-                    return <label key={diet.name}>{diet.name}</label>
+                    return <label className="label" key={diet.name}>{diet.name}</label>
                 }
-                else return <h4>{diet}</h4>
+                else return <h4 className="label">{diet}</h4>
             })}</div>
             </div>
             </div>
