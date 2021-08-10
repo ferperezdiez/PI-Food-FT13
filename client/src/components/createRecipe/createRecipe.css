@@ -1,4 +1,25 @@
+.form_create{
+  padding: 10px;
+  max-width: 400px;
+  background-color: #E7E7E7;
+  margin: 0 auto;
+            border-radius: 10px;
+}
 
+.form_button {
+  display: block;
+  background-color: #eb7700;
+  padding: 10px 45px 10px 45px;
+  border: 0;
+  font-size: 1em;
+  color: white;
+  /* font-family: "Roboto", sans-serif; */
+  border-radius: 10px;
+  margin: 0 auto 0;
+}
+.form_button:hover{
+  background-color: #046193;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -12,8 +33,8 @@ body {
   margin: 0 auto;
 		    border-radius: 10px;
 }
-
-form input, form textarea{
+ 
+.form_input, .form_textarea{
   margin-bottom: 15px;
   font-family: "Roboto", sans-serif;
   width: 100%;
@@ -41,7 +62,7 @@ form input, form textarea{
 .buttonForm:hover{
 	background-color: #046193;
 }
-textarea { resize: none; }
+.form_textarea { resize: none; }
 		
 		input[type="checkbox" i] {
     display: inline-block;

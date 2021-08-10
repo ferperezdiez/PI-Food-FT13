@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import { connect } from "react-redux";
 import {findRecipe, reset} from "../../actions/actions";
-import "./searchBar.css"
+import "./searchBar.css";
+import { FaSistrix } from "react-icons/fa";
+
 
 
 function SearchBar (props) {
@@ -9,7 +11,7 @@ function SearchBar (props) {
     const [inputState, setInput] = useState("")
 
     function handleChange(e){
-        setInput(e.target.value)
+        setInput(e.target.value)      
     }
 
     function handleSubmit(e){
@@ -22,9 +24,9 @@ function SearchBar (props) {
     return (
         <div className="box2">
             {props.error}            
-            <form onSubmit={handleSubmit}>
-            <input name="name" placeholder="ingrese el nombre de la receta" onChange={handleChange} value={inputState}/>
-            <button type="submit">submit</button>
+            <form className="searchBer_form" onSubmit={handleSubmit}>
+            <input className="searchBar_input" name="name" placeholder="ingrese el nombre de la receta" onChange={handleChange} value={inputState}/>
+            <button className="searchBar_button" type="submit"><FaSistrix/></button>
             </form>
         </div>
     )

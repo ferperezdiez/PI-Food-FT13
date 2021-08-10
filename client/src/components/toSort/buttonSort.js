@@ -1,42 +1,40 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addSorted, addFiltered } from "../../actions/actions";
+import { useSort } from "../../Controllers";
 import './buttonSort.css'
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 
-export default function ButtonSort (){
-    const state = useSelector(state => state.recipes)
-    const dispatch = useDispatch()
-    function ascendent (){
-        var recipeSorted = state.sort(function(a,b){
-            if(a.title > b.title) return 1
-            if(a.title < b.title) return -1
-            if(a.title === b.title) return 0        
-        })    
-        dispatch(addSorted(recipeSorted))      
-        var lastIndex = (state.length - 1)
-        var firstIndex = lastIndex - 9
-        var newfilter = state.slice(firstIndex, lastIndex)        
-        dispatch(addFiltered(newfilter))   
-    }
-    function descendent (){
-        var recipeSorted = state.sort(function(a,b){
-            if(a.title < b.title) return 1
-            if(a.title > b.title) return -1
-            if(a.title === b.title) return 0        
-        })
-        dispatch(addSorted(recipeSorted))    
-        var lastIndex = (state.length - 1)
-        var firstIndex = lastIndex - 9
-        var newfilter = state.slice(firstIndex, lastIndex)        
-        dispatch(addFiltered(newfilter))   
-    }
+
+export default function ButtonSort (){    
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const {ascendent, descendent} = useSort()
     
-    return (
-            <div className="sortStyle">
-                <button className="sort" onClick={descendent}>sort a/z </button>
-                <button className="sort" onClick={ascendent}>sort z/a</button>
-            </div>
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    const handleChange = (e) => {
+       if ( e.target.value === 'ascendent') return ascendent()
+       else return descendent()
+    }
+     
+    return (        
+        <div className="sort-container">
+            {/* <select onChange={handleChange} className="sortStyle">
+                <option className="sort" value="descendent">sort a/z </option>
+                <option className="sort" value="ascendent">sort z/a</option>
+            </select> */}
+            <span onClick={handleClick} aria-controls="simple-menu" >sort</span>
+             <Menu id="simple-menu" anchorEl={anchorEl} keepMounted open={Boolean(anchorEl)} onClose={handleClose}>
+                <MenuItem onClick={ascendent}>sort ascendent</MenuItem>
+                <MenuItem onClick={descendent}>sort descendent</MenuItem>                           
+            </Menu>
+        </div>
     )
 
 }

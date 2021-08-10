@@ -74,32 +74,32 @@ export default function Form (){
 
     return (
         <div className="fondo">
-            <form onSubmit={handleSubmit}>
-                <input name="title" placeholder="Nombre de tu receta" onChange={handleChange} value={recipesState.name}></input>
-                <textarea name="resume" placeholder="Descripción de tu receta" onChange={handleChange} value={recipesState.resume}></textarea>
-                <input name="spoonacularScore" placeholder="Puntaje de tu receta" onChange={(e) => validateNumber(e)} value={recipesState.spoonacularScore}></input>
+            <form className="form_create" onSubmit={handleSubmit}>
+                <input className="form_input" name="title" placeholder="Nombre de tu receta" onChange={handleChange} value={recipesState.name}></input>
+                <textarea className="form_textarea" name="resume" placeholder="Descripción de tu receta" onChange={handleChange} value={recipesState.resume}></textarea>
+                <input className="form_input" name="spoonacularScore" placeholder="Puntaje de tu receta" onChange={(e) => validateNumber(e)} value={recipesState.spoonacularScore}></input>
                 {!spoonScoreErr ? null : <span>{spoonScoreErr}</span>}
-                <input name="healthScore" placeholder="Nivel de 'comida saludable'" onChange={(e) => validateNumber(e)} value={recipesState.healthScore}></input>
+                <input className="form_input" name="healthScore" placeholder="Nivel de 'comida saludable'" onChange={(e) => validateNumber(e)} value={recipesState.healthScore}></input>
                 {!healthScoreErr ? null : <span>{healthScoreErr}</span>}
-                <textarea name="analyzedInstructions" placeholder="Instrucciones" onChange={handleChange} value={recipesState.analyzedInstructions}></textarea>
+                <textarea className="form_textarea" name="analyzedInstructions" placeholder="Instrucciones" onChange={handleChange} value={recipesState.analyzedInstructions}></textarea>
                 <div>
                 {diets.map(diet =>{
                     return(
                         <div key={diet.id}>
                             <label>{diet.name}</label>
-                            <input name="diet" type="checkBox" onChange={handleChange} value={diet.name}></input>
+                            <input className="form_input" name="diet" type="checkBox" onChange={handleChange} value={diet.name}></input>
                         </div>                       
                     )
                 }) }
                 </div>
-                <button>Submit</button> 
+                <button className="form_button">Submit</button> 
             </form>
             <div>{posted}</div>            
             {posted.length > 1 && <form onSubmit={refresh}>
-                <button className="buttonRefresh">Ingresar otra receta</button>
+                <button className="form_button" className="buttonRefresh">Ingresar otra receta</button>
             </form>}
             <Link to='/home'>
-                <button>Volver</button>
+                <button className="form_button">Volver</button>
             </Link>
         </div>
     )

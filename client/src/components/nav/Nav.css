@@ -1,33 +1,18 @@
-.headerContainer{
- 
-  width: auto;
-  height: 50px;
-  margin: 0 auto;
-  
-}
+
 		
 .nav-container{
-  padding: 10px;
+  display: flex;
+  padding: 30px;
   width: auto;
-  
-  margin: 0 auto;
-  
+  justify-content: space-around;
+  align-items: center;
+  margin: 10PX auto;
+  background-color: rgb(235, 138, 68);
+  flex-wrap: wrap;
+  height: 100PX;
 
 }
 
-form input{
-  margin-bottom: 15px;
-  font-family: "Roboto", sans-serif;
-  width: 100%;
-  padding: 10px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; 
-  border: none; 
-  color: #525c66; 
-  font-size: 1em;
-  resize: horizontal; 
-    border-radius: 5px;
-}
 
 
 
@@ -35,4 +20,29 @@ form input{
   margin:0px 0px 0px 0px;
   width: 33%;
   float: left;
+}
+
+.box4{
+  margin: 12px 0px 12px 0px;
+  float: left;
+
+}
+
+.buttonCreate {
+    margin-bottom: 15px;
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; 
+    border: none; 
+    color: #525c66; 
+    font-size: 1em;
+    background-color: white;
+    
+    border-radius: 5px
+}
+
+.buttonCreate:hover{
+  cursor: pointer;
 }

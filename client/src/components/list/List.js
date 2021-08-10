@@ -17,28 +17,28 @@ Este componente se encarga de renderizar 9 recetas filtradas según indicación 
     var countId = 0;
     const state = useSelector(state => state.filtered)    
     return (
-        <div>
-            <ul>
+        <div >
+            <ul className="list_ul">
          {state.map(function(recipe) {                        
              return (
                  <div >
-                 <li key={recipe.id}>
-                     <Link to={`/home/${recipe.id}`}>
-                     <span>{recipe.title}</span>
+                 <li className="list_li" key={recipe.id}>
+                     <Link className="list_link" to={`/home/${recipe.id}`}>
+                     <span className="list_title">{recipe.title}</span>
                      </Link>
                      <p> {recipe.image? <img src={recipe.image}/> :
-                         <img src={recipeByUser}/> }</p>
+                         <img className="list_img" src={recipeByUser}/> }</p>
                      <div>{recipe.diets?.map(function(diet) {
                          countId++                        
                          if(typeof diet === 'object'){                             
                              return (
-                                 <label key={diet.name + countId}>{diet.name}</label>                            
+                                 <label className="list_label" key={diet.name + countId}>{diet.name}</label>                            
                               )                             
                         }
                         else {                            
                             return(
                                 <div>
-                                    <label key={diet + countId}>{diet}</label>                                    
+                                    <label className="list_label" key={diet + countId}>{diet}</label>                                    
                                 </div>
                             )
                         }

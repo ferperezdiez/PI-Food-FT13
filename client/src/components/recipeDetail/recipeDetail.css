@@ -1,43 +1,95 @@
-body {
-    font-family: 'Poppins', sans-serif;
-    color: #390f61; 
+.container-detail{
+   color: green;
+   width: 97vw;    
+    margin: 0;
 }
 
+.title-detail{
+    font-size: 40px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
 
-.paragraph-detail{
- 
+.detail_plate_container{
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.detail_image{
+    
+    height: 400px;
+    width: 400px;
+}
+
+.plate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 100%;    
+    height: 350px;
+    width: 350px;
+}
+
+.paragraph-detail{    
     background-color: #FAEBD7;
-    margin: 0px 67px 0px 67px;
+    margin: 20px auto ;
+    width: 40%;
     
 }
 .label{
     color: #a7824b;
     display: inline-block;
-    background-color: burlywood;
-    margin-right: 8px;
-    margin-bottom: 8px;
+    background-color: burlywood;   
+    margin-right: 8px;    
+    margin-top: 15px;
+    margin-bottom: 70px;
     padding: 2px 6px;
     font-size: 18px; 
     border-radius: 22px;
 }
- 
+
+.instructions{
+    color: #a7824b;
+    display: inline-block;
+    background-color: burlywood;   
+    margin-right: 8px;    
+    margin-top: 15px;
+    
+    padding: 2px 6px;
+    font-size: 28px; 
+    border-radius: 22px;
+}
+.detail_instructions{
+    width: 70%;
+    margin: 0 auto 0
+}
+
 
 .summaryStyle {
-    margin-bottom: 45px; 
-    padding: 25px 0px 42px 0px;
+    cursor: default;
+    pointer-events: none;        
+    text-decoration: none;
+    color: green;
+    width: 83%;
+    margin: 100px auto 0px;
     line-height:200%;
     background-color: #FAEBD7;
 }
 
 .summaryStyle a {
-    color: #390f61;
-    text-decoration: none;
-    
+    color:green;
+    text-decoration: none;    
 }
 
-.instructionsRecipe {
-    min-height: 161px;
-
+.instructionsRecipe {   
+    padding: 10px;
+    background-color: #FAEBD7;
+    margin: 20px auto;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 15px;
 }
 
 .scoreRecipe {
@@ -45,10 +97,35 @@ body {
 }
 
 .ulContainer {
-   display: ruby-base-container;
+   display:inline-block;
    justify-content:space-between;
-    width: 100%;
-    margin: 0px 0px 0px 50px;
+    width: 80%;
+    margin: 0px 0px 0px 0px;
+    list-style-type: none;  
+    margin-top: 5px;
+    padding: 10px;   
+}
 
-   
+.detail_bottom{
+    display: block;
+    width: 100vw;
+}
+
+.detail_button{
+    display: block;
+    background-color: #eb7700;
+    padding: 10px 45px 10px 45px;
+    border: 0;
+    font-size: 1em;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    border-radius: 10px;
+    margin: auto;
+    justify-self: center;
+    align-self: center;
+}
+
+.detail_button:hover{
+    background-color: #046193;
+    cursor: pointer;
 }

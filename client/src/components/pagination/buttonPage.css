@@ -4,3 +4,40 @@
       float:left;
 
 }
+
+.pagination_container{
+  position: absolute;
+  right: 0;
+  width: 100%; 
+ display: inline-block;
+ top: 50%;
+ bottom: 50%;
+ 
+}
+.pagination_left{
+ position: fixed;
+left: 0% ;
+background-color: transparent;
+border: none;
+font-size: 3em;
+opacity: 40%;
+color: rgb(143, 122, 6);
+}
+
+.pagination_left:hover{
+  cursor: pointer;
+}
+
+.pagination_right{
+ position: fixed;
+ right: 0% ;
+ background-color: transparent;
+ border: none;
+ font-size: 3em;
+ opacity: 40%;
+ color: rgb(143, 122, 6);
+}
+
+.pagination_right:hover{
+  cursor: pointer;
+}

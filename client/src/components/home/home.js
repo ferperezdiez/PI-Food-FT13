@@ -1,6 +1,5 @@
 import React from 'react';
 import List from '../list/List.js'
-import {Link} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {addDietType, getAll } from '../../actions/actions.js';
@@ -27,11 +26,7 @@ export default function Home (){
         <div>
             <div>                
                 <Nav/>               
-                <Link to="/create">
-                <div className="box4">
-                <button className="buttonCreate">crea una receta</button>
-                </div>
-               </Link>                
+                            
                 <List/>                
             </div>
         </div>

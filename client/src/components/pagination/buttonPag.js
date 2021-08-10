@@ -2,6 +2,9 @@ import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFiltered } from "../../actions/actions";
 import "./buttonPage.css";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+
 
 /*
 Como parte de los requerimientos estaba la limitación de utilizar librerías de paginado.
@@ -34,9 +37,9 @@ En este componente se realiza esa funcionalidad.
 
     
     return (
-        <div >
-            <button className="sort" onClick={prev}>prev</button>
-            <button className="sort" onClick={next}>next</button>
+        <div className="pagination_container" >
+            <button className="pagination_left" onClick={prev}><FaChevronLeft/>  </button>
+            <button className="pagination_right" onClick={next}><FaChevronRight/></button>
         </div>
     )
 }
