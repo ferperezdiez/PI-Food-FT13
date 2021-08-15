@@ -3,7 +3,7 @@ import List from '../list/List.js'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {addDietType, getAll } from '../../actions/actions.js';
-import firstLoad from '../firstLoad';
+import {FirstLoad} from '../../Controllers';
 import Nav from '../nav/Nav';
 import './home.css';
 
@@ -20,13 +20,12 @@ export default function Home (){
         dispatch(getAll())
     },[])
     
-    firstLoad()     
+    FirstLoad()     
         
     return(
         <div>
             <div>                
-                <Nav/>               
-                            
+                <Nav/>                        
                 <List/>                
             </div>
         </div>

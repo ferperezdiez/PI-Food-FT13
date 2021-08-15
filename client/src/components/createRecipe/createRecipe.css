@@ -3,7 +3,23 @@
   max-width: 400px;
   background-color: #E7E7E7;
   margin: 0 auto;
-            border-radius: 10px;
+  border-radius: 10px;
+}
+
+.buttonRefresh{
+  display: block;
+  background-color: #eb7700;
+  padding: 10px 45px 10px 45px;
+  border: 0;
+  font-size: 1em;
+  color: white;  
+  border-radius: 10px;
+  margin: 25px auto 
+}
+
+.buttonRefresh:hover{
+  background-color: #046193;
+  cursor: pointer;
 }
 
 .form_button {
@@ -19,6 +35,7 @@
 }
 .form_button:hover{
   background-color: #046193;
+  cursor: pointer;
 }
 
 body {
@@ -31,7 +48,7 @@ body {
   max-width: 400px;
   background-color: #E7E7E7;
   margin: 0 auto;
-		    border-radius: 10px;
+	border-radius: 10px;
 }
  
 .form_input, .form_textarea{
@@ -45,7 +62,7 @@ body {
   color: #525c66; 
   font-size: 1em;
   resize: horizontal; 
-	    border-radius: 5px;
+	border-radius: 5px;
 }
 
 .buttonForm {
@@ -69,8 +86,3 @@ body {
     width: 35px;
 }
 
-.buttonRefresh {
-margin: 13px 45px 10px 45px;
-margin: 7px auto 0px;
-
-}

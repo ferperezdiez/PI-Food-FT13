@@ -1,18 +1,18 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { addRecipe } from '../../actions/actions';
 import {Link} from "react-router-dom"
 import './recipeDetail.css'
 
 export default function RecipeDetail(props) {
  
-    const [idState, setIdState] = useState("")
+    
     const dispatch = useDispatch()
 
     useEffect(() => {
         const idParams = props.match.params.id;
-        setIdState(idParams)
+      
         dispatch(addRecipe(idParams))        
     }, [])
     

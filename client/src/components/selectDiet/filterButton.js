@@ -3,31 +3,18 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { findDietType } from '../../actions/actions';
 import "./filterButton.css"
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 
-export default function FilterButton() {
- 
-    const [anchorEl, setAnchorEl] = React.useState(null);
+
+export default function FilterButton() { 
+    
     const diets = useSelector(state => state.diets)
     const dispatch = useDispatch()
-
     function handleChange(e){
         e.preventDefault()
         dispatch(findDietType(e.target.value))
-    }
-
-    const handleClick = (event) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
+    }  
 
     return (
-       
-
         <form  className="diet_container">
             <select className="diet_select" onChange={handleChange}>
                 <option className="diet_option">Seleccione por tipo de dieta</option>

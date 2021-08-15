@@ -52,23 +52,16 @@ export function findDietType (diet){
     }
 }
 
-export function postRecipe (form){
-    return (dispatch) => {
-        axios.post(`http://localhost:3004/recipes`, form)
-        .then((result) => {    
-                    
-            dispatch({
-                type: ADD_POSTED,
-                payload: `La receta "${form.name}" fue publicada con exito`
-            })
-        }).catch(e => {
-            dispatch({
-                type: ADD_POSTED,
-                payload: `No fue posible publicar la receta "${form.name}"`
-            })
-        });
-    }
-}
+export const postRecipe =  (form) =>  async (dispatch) => {
+        try {
+            await axios.post(`http://localhost:3004/recipes`, form)
+             dispatch({ type: ADD_POSTED, payload: "success" })
+            }
+            catch(e){dispatch({ type: ADD_POSTED, payload: "error" })}}
+
+export const resetPostedRecipe = () => (dispatch) => dispatch({type: ADD_POSTED, payload: ""})            
+                 
+
 
 
 export function getAll (){
