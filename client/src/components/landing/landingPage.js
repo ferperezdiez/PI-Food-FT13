@@ -8,12 +8,10 @@ export default function LandingPage() {
       
     
     return (
-        <div className="container">           
-            <div className="button-container">                
+        <div className="container">                      
                 <Link to="/home">
-                    <button className="button">Ingresar</button>
-                </Link>
-            </div>
+                    <button className="landing_button">Ingresar</button>
+                </Link>            
         </div>
         )
 }

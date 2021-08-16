@@ -2,10 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { findDietType } from '../../actions/actions';
-import "./filterButton.css"
+import "./index.css"
 
 
-export default function FilterButton() { 
+export default function Filter() { 
     
     const diets = useSelector(state => state.diets)
     const dispatch = useDispatch()

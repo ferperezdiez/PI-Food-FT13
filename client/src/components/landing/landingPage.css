@@ -1,39 +1,39 @@
 
 .container  { 
-    margin: 0 auto;
+    
     background-image: url("../../images/landingPage.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height:100vh;
-    
-
-}
-
-.button-container {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+   
+
 }
 
-.button {
-    position: absolute;
-    top: 50%;
-    right: 70%;
 
-    display: block;
-    background-color: #eb7700;
-    padding: 10px 45px 10px 45px;
-    border: 0;
-    font-size: 1em;
-    color: white;
+
+.landing_button {
+  
+    margin: 0px -383px 99px 0px;
+    border: 1px solid transparent;
+    background-color: transparent;
+    font-size: 2em;
+    color: rgb(18, 32, 22);
     font-family: "Roboto", sans-serif;
-    border-radius: 10px;
-    margin: auto;
-    justify-self: center;
-    align-self: center;
+    font-synthesis: style;
+    font-weight: bolder;
+    border-radius: 50%;
+    height: 5.5em;
+    width: 5.5em;
+    transition: 0.5s;
+    
         
     }
-.button:hover {
-    background-color: hsl(202, 5%, 71%);
+
+.landing_button:hover {
+    font-size: 1.7em;
     cursor: pointer;
+    color: rgb(71, 105, 81);
 }
