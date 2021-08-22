@@ -1,3 +1,14 @@
 .home_container{
     background-image: url("../../images/mosaico.jpg");
 }
+
+.home_container_loading{
+    
+}
+.loader{
+    position: fixed ;  
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%; 
+    
+}

@@ -12,7 +12,7 @@ export default function List (){
     var countId = 0;
 
     return ( 
-        <div>
+        <div className="list_container">
             <ul className="list_ul">
          {state?.map(function(recipe) {                         
             return (

@@ -1,5 +1,6 @@
-import { ADD_RECIPES, ADD_DIETTYPE, ADD_POSTED, ADD_FILTERED, ADD_RECIPE, ADD_MESSAGE, RESET_MESSAGE } from "./actionsName";
+import { LOADING, ADD_RECIPES, ADD_DIETTYPE, ADD_POSTED, ADD_FILTERED, ADD_RECIPE, ADD_MESSAGE, RESET_MESSAGE } from "./actionsName";
 import axios from 'axios'
+
 
 
 export function findRecipe (name){
@@ -28,13 +29,13 @@ export function reset () {
 }
 
 export function addDietType () {
-    return(dispatch) => {
+    return(dispatch) => {        
         axios.get(`http://localhost:3004/types`)
             .then(response => {
                 dispatch({
                     type: ADD_DIETTYPE,
                     payload: response.data
-                })
+                })                
             })
     }
 }
@@ -89,11 +90,16 @@ export function addFiltered(filtered){
 
 export function first(){   
     return (dispatch) => {
+        dispatch({type: LOADING, payload: true })
         axios.get('http://localhost:3004/recipes?first=first')
         .then((response) => {
             dispatch({
                 type: ADD_FILTERED,
                 payload: response.data
+            })
+            dispatch({
+                type: LOADING,
+                payload: false
             })
         }) 
     }
