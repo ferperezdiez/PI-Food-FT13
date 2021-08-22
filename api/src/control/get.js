@@ -15,11 +15,13 @@ keyword or general research.
 async function getRecipes (req,res, next){
   if (req.query.diet) {
     try {
+      console.log(req.query.diet)
       const { diet } = req.query
       const recipiesApy = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=300`)
       const myRecipies = await Recipe.findAll({
         include: Diets
       })
+      
       var resultado = myRecipies.concat(recipiesApy.data.results)
       var resultado2 = resultado.filter(recipe => recipe.diets.includes(diet)).slice(0, 99)
       if (resultado2.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
@@ -55,7 +57,16 @@ async function getRecipes (req,res, next){
         include: Diets
       })
       var resultado = myRecipies.concat(recipiesApy.data.results)
-      if (resultado.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')
+      if (resultado.length === 0) return res.status(404).send('no se encontraron recetas que coincidan con la búsqueda solicitada')      
+      if (req.query.first){
+        if(resultado.length < 9) return res.send(resultado)
+        else {
+          var lastIndex = (resultado.length - 1) 
+          var firstIndex = lastIndex - 9
+          var newfilter = resultado.slice(firstIndex, lastIndex)
+          return res.send(newfilter) 
+        }
+      }
       res.status(200).send(resultado)
     }
     catch (error) {
@@ -66,18 +77,18 @@ async function getRecipes (req,res, next){
 }
 
 async function getTypes (req, res, next){
-  try {result = await Diets.findAll()
+  try {result = await Diets.findAll()        
     if (result.length > 0) return res.send(result)
     else {
       const dietss = []
       const dietsData = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`)      
       dietsData.data.results.forEach(result => {
           result.diets.forEach(result => {
-            if (!dietss.includes(result)) {
-              dietss.push(result)
+            if (!dietss.includes(result) && result !== '') {
+              dietss.push(result) 
             }
           })
-        })       
+        }) 
           await dietss.forEach(result => {
             Diets.create({
               name: result

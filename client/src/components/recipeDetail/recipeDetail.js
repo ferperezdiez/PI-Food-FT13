@@ -14,36 +14,41 @@ export default function RecipeDetail(props) {
         const idParams = props.match.params.id;
       
         dispatch(addRecipe(idParams))        
-    }, [])
+    }, [props.match.params.id, dispatch])
     
     const state = useSelector(state => state.recipe)
     function summary(){
         return {__html: state.summary};
      }
-    console.log(state.diets)
+   
+     var counter = 200
+
     return (
-        <div className="container-detail">
-                <h1 className="title-detail">{state.title? state.title : state.name }</h1>
-               <div className="detail_plate_container">
-                    <div className="plate">
-                        <img className="detail_image" src={state.image}/>
+        <div  className="container-detail">
+                <h1  className="title-detail">{state.title? state.title : state.name }</h1>
+               <div  className="detail_plate_container">
+                    <div  className="plate">
+                        <img  className="detail_image" src={state.image} alt="img"/>
                     </div>
                </div>
-                <div className="paragraph-detail">
+                <div  className="paragraph-detail">
                     <h4 className="summaryStyle" dangerouslySetInnerHTML={summary()} ></h4>
                 </div> 
                 <div className="list-container">{state.diets?.map(diet => {
                     if(diet.name){
-                        return <label className="label" key={diet.name}>{diet.name}</label>
+                        return <label className="label" key={diet.id}>{diet.name}</label>
                     }
-                    else return <h4 className="label">{diet}</h4>
+                    else return <h4  key={Math.random()} className="label">{diet}</h4>
                 })}</div>
               
                 <label className="instructions">Instructions:</label>
                 <div className="detail_instructions">{state.title?
                 <ul className="ulContainer">
-                    {state.analyzedInstructions[0].steps.map(instruction => {                    
-                        return <li className="instructionsRecipe" key={instruction.number}>{instruction.step}</li>
+                    {state.analyzedInstructions[0].steps.map(instruction => {
+                        counter++                        
+                        return <li key={counter} className="instructionsRecipe">
+                                {instruction.step}
+                            </li>
                     })}
                 </ul>
                 : <p>{state.analyzedInstructions}</p>}

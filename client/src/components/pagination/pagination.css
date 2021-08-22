@@ -26,6 +26,8 @@ color: rgb(143, 122, 6);
 
 .pagination_left:hover{
   cursor: pointer;
+  color: hsl(96, 100%, 36%);
+  opacity: 100%;
 }
 
 .pagination_right{
@@ -40,4 +42,6 @@ color: rgb(143, 122, 6);
 
 .pagination_right:hover{
   cursor: pointer;
+  color: hsl(96, 100%, 36%);
+  opacity: 100%;
 }

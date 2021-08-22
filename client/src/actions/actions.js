@@ -40,10 +40,10 @@ export function addDietType () {
 }
 
 
-export function findDietType (diet){
+export function findDietType (diet){    
     return (dispatch) => {
         axios.get(`http://localhost:3004/recipes?diet=${diet}`)
-        .then(response => {
+        .then(response => {            
             dispatch({
                 type: ADD_RECIPES,
                 payload: response.data
@@ -80,6 +80,22 @@ export function addFiltered(filtered){
     return {        
         type: ADD_FILTERED,
         payload: filtered
+    }
+}
+
+
+
+
+
+export function first(){   
+    return (dispatch) => {
+        axios.get('http://localhost:3004/recipes?first=first')
+        .then((response) => {
+            dispatch({
+                type: ADD_FILTERED,
+                payload: response.data
+            })
+        }) 
     }
 }
 

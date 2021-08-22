@@ -17,6 +17,11 @@
         color: #525c66; 
         font-size: 1em;
         resize: horizontal; 
-	      border-radius: 5px;
+	      border-radius: 10px;
       }
-    
+
+    .diet_select:hover{
+      cursor: pointer;
+      background-color: hsl(96, 100%, 36%);
+      color: white;
+    }

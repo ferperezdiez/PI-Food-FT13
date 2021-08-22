@@ -40,10 +40,11 @@
     font-size: 1em;
     background-color: white;
     
-    border-radius: 5px
+    border-radius: 10px
 }
 
 .buttonCreate:hover{
   cursor: pointer;
-  background-color: hsl(202, 5%, 71%);
+  background-color: hsl(96, 100%, 36%);
+  color: white;
 }

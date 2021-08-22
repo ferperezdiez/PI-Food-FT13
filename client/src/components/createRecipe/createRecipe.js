@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { postRecipe, resetPostedRecipe } from "../../actions/actions";
 import { useEffect } from 'react';
@@ -10,16 +10,13 @@ import swal from 'sweetalert';
 
 export default function Form (){
 
-    /*
-    Componente encargado de la creación de una receta nueva.
-    Cuenta con un componente controlado y se renderiza un mensaje de confirmación
-    o de error según el caso.
-    */
+   
    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(addDietType());
-    }, [])
+    
+       useEffect(() => {         
+           dispatch(addDietType());
+       }, [dispatch])
+   
 
     const form = {
         title: '',
@@ -40,7 +37,7 @@ export default function Form (){
     function checkBoxSet (array) {
         let obj = {}
         array.map(diet => {
-            obj[diet.name] = false
+           return obj[diet.name] = false
         })
         return obj
     }
@@ -78,14 +75,17 @@ export default function Form (){
     }
 
     function validateNumber(e) {
-    var val = e.target.value
+    let val = e.target.value
+    let spoonacularScore = 'spoonacularScore'
+    let healthScore = 'healthScore'
     if(!/[0-9]/.test(val)) {
-        if([e.target.name] == 'spoonacularScore') setSpoonScoreErr('should be a number')          
-        if([e.target.name] == 'healthScore') setHealthScoreErr('should be a number');
+        
+        if(e.target.name === spoonacularScore) setSpoonScoreErr('should be a number')          
+        if(e.target.name === healthScore) setHealthScoreErr('should be a number');
     }
      else {
-        if([e.target.name] == 'spoonacularScore') setSpoonScoreErr('')
-        if([e.target.name] == 'healthScore') setHealthScoreErr('')
+        if(e.target.name === spoonacularScore) setSpoonScoreErr('')
+        if(e.target.name === healthScore) setHealthScoreErr('')
     }
     SetRecipesState({...recipesState, [e.target.name]: e.target.value});
    

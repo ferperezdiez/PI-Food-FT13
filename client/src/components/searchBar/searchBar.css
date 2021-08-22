@@ -10,12 +10,22 @@
   color: #525c66; 
   font-size: 1em;
 flex-grow: 1;
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 10px 0px 0px 5px;
 }
 .searchBer_form{
     display: flex;
     width: fit-content
+}
 
+.searchBar_input:hover{
+  cursor: pointer;
+  background-color: hsl(96, 100%, 36%);
+  color: white;
+  
+}
+
+.searchBar_input:hover::placeholder{
+  color: white;
 }
 
 .searchBar_button{
@@ -30,9 +40,11 @@ flex-grow: 1;
     font-size: 1em;
     background-color: white;
     
-    border-radius: 0px 5px 5px 0px;
+    border-radius: 0px 10px 10px 0px;
 }
 
 .searchBar_button:hover{
-    cursor: pointer;
+  cursor: pointer;
+  background-color: hsl(96, 100%, 36%);
+  color: white;
 }

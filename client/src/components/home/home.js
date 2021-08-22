@@ -1,9 +1,8 @@
 import React from 'react';
 import List from '../list/List.js'
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {addDietType, getAll } from '../../actions/actions.js';
-import {FirstLoad} from '../../Controllers';
+import { useDispatch } from 'react-redux';
+import {addDietType, getAll, first } from '../../actions/actions.js';
 import Nav from '../nav/Nav';
 import './home.css';
 
@@ -11,25 +10,26 @@ import './home.css';
 
 export default function Home (){
     
-
-    const dispatch = useDispatch()
+    const dispatch = useDispatch()    
+   
     useEffect(() => {        
-       dispatch(addDietType());   
-    },[])
+        dispatch(addDietType());   
+    },[dispatch])
+
     useEffect(() => {              
         dispatch(getAll())
-    },[])
+    },[dispatch])
     
-    FirstLoad()     
+    useEffect(() => {              
+        dispatch(first())        
+    },[dispatch])
+    
         
     return(
-        <div>
-            <div>                
+            <div className="home_container">                
                 <Nav/>                        
                 <List/>                
-            </div>
-        </div>
-    )
-    
+            </div>   
+    )    
 }
     
