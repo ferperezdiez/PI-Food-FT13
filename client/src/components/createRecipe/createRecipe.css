@@ -1,3 +1,10 @@
+.fondo{
+  background: url("../../images/mosaico.jpg") no-repeat center center fixed; 
+  background-size: cover; 
+   width: 96vw;
+  
+}
+
 .form_create{
   padding: 10px;
   max-width: 400px;
@@ -23,6 +30,7 @@
 }
 
 .form_button {
+  text-decoration: none;
   display: block;
   background-color: #eb7700;
   padding: 10px 45px 10px 45px;
@@ -32,6 +40,7 @@
   /* font-family: "Roboto", sans-serif; */
   border-radius: 10px;
   margin: 0 auto 0;
+  margin-top: 6px;
 }
 .form_button:hover{
   background-color: #046193;
@@ -66,6 +75,7 @@ body {
 }
 
 .buttonForm {
+    text-decoration: none;
     display: block;
     background-color: #eb7700;
     padding: 10px 45px 10px 45px;

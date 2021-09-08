@@ -1,9 +1,5 @@
 
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+
 .App {
   text-align: center;   
 }
@@ -14,40 +10,48 @@
   margin-top: 30px;
   padding: 0;
 }
-.list_container{
-  background-image: url("../../images/mosaico.jpg");
+.list_container{  
+  background: url("../../images/mosaico.jpg") no-repeat center center fixed; 
+  background-size: cover; 
+   width: 96vw;
+   height: 150vw
 }
 
 
 .list_li{
   text-decoration: none;
-  background-color: antiquewhite;
+  background-color: antiquewhite ;
   width: 29%;
   float: left;
   padding: 30px;
   /* border: 4px #000000; */
   margin: 15px;
- height: 570px;
+ height: 500px;
   border-radius: 10px;
+  opacity:80%;
+  
 }
 
 .list_img {
-  width: 100%	
+  width: 100%;	
+  opacity: 100%;
 }
 
 .list_title{
   text-decoration: none;
   color: green;
+  opacity: 100%;
 
 }
 
 .list_link{
   text-decoration: none;
+  opacity: 100%;
 }
 
 .list_label {
     color: #a7824b;
-    
+    opacity: 100%;
     display: inline-block;
     background-color: burlywood;
     margin-right: 8px;

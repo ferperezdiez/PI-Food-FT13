@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export function findRecipe (name){
     return (dispatch) => {
-        axios.get(`http://localhost:3004/recipes?name=${name}`)
+        axios.get(`/recipes?name=${name}`)
         .then(response => {
             dispatch({
                 type: ADD_RECIPES,
@@ -30,7 +30,7 @@ export function reset () {
 
 export function addDietType () {
     return(dispatch) => {        
-        axios.get(`http://localhost:3004/types`)
+        axios.get(`/types`)
             .then(response => {
                 dispatch({
                     type: ADD_DIETTYPE,
@@ -43,7 +43,7 @@ export function addDietType () {
 
 export function findDietType (diet){    
     return (dispatch) => {
-        axios.get(`http://localhost:3004/recipes?diet=${diet}`)
+        axios.get(`/recipes?diet=${diet}`)
         .then(response => {            
             dispatch({
                 type: ADD_RECIPES,
@@ -55,7 +55,7 @@ export function findDietType (diet){
 
 export const postRecipe =  (form) =>  async (dispatch) => {
         try {
-            await axios.post(`http://localhost:3004/recipes`, form)
+            await axios.post(`/recipes`, form)
              dispatch({ type: ADD_POSTED, payload: "success" })
             }
             catch(e){dispatch({ type: ADD_POSTED, payload: "error" })}}
@@ -67,7 +67,7 @@ export const resetPostedRecipe = () => (dispatch) => dispatch({type: ADD_POSTED,
 
 export function getAll (){
     return (dispatch) => {
-        axios.get(`http://localhost:3004/recipes`)
+        axios.get(`/recipes`)
         .then(response => {
             dispatch({
                 type: ADD_RECIPES,
@@ -91,7 +91,7 @@ export function addFiltered(filtered){
 export function first(){   
     return (dispatch) => {
         dispatch({type: LOADING, payload: true })
-        axios.get('http://localhost:3004/recipes?first=first')
+        axios.get('/recipes?first=first')
         .then((response) => {
             dispatch({
                 type: ADD_FILTERED,
@@ -114,7 +114,7 @@ export function addSorted(sorted){
 
 export function addRecipe(id){
     return (dispatch) => {
-        axios.get(`http://localhost:3004/recipes/${id}`)
+        axios.get(`/recipes/${id}`)
             .then(response =>{                
                 dispatch({
                     type: ADD_RECIPE,

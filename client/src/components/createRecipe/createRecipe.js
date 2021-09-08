@@ -115,13 +115,13 @@ export default function Form (){
                 }) }
                 </div>
                 <button className="form_button">Submit</button> 
+                <Link to='/home'>
+                    <button className="form_button">Volver</button>
+                </Link>
             </form>
-            <div>{Object.keys(posted).length > 1 ? sweet(): null}</div>
+            <div>{posted.length > 1 ? sweet(): null}</div>
             <div>            
             </div>            
-            <Link to='/home'>
-                <button className="form_button">Volver</button>
-            </Link>
         </div>
     )
 }

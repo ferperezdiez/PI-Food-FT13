@@ -16,12 +16,12 @@ export default function List (){
             <ul className="list_ul">
          {state?.map(function(recipe) {                         
             return (
-                <div key={countId++}>
+                <div className="list_card" key={countId++}>
                     <li key={countId++} className="list_li">
                         <Link  className="list_link" to={`/home/${recipe.id}`}>
                             <span className="list_title">{recipe.title}</span>
                         </Link>
-                        <p> {recipe.image? <img src={recipe.image} alt="recipe"/> :
+                        <p> {recipe.image? <img className="list_img" src={recipe.image} alt="recipe"/> :
                         <img className="list_img" src={recipeByUser} alt="img"/> }</p>
                         <div key={Math.random()}>{recipe.diets?.map(function(diet) {
                             countId++                        

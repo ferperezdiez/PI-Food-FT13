@@ -22,7 +22,7 @@ const { conn } = require('./src/db.js');
 
 
 conn.sync().then(() => {
-  server.listen(3004, () => {
+  server.listen(process.env.PORT, () => {
     console.log('%s listening at 3004'); 
   });
 });
