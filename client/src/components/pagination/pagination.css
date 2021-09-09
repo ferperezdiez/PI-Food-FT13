@@ -20,7 +20,7 @@ left: 0% ;
 
 border: none;
 font-size: 3em;
-
+background-color: transparent;
 color: rgb(143, 122, 6);
 }
 
@@ -31,9 +31,10 @@ color: rgb(143, 122, 6);
 }
 
 .pagination_right{
+
  position: fixed;
  right: 0% ;
-
+ background-color: transparent;
  border: none;
  font-size: 3em;
 
