@@ -42,7 +42,7 @@ export default function RecipeDetail(props) {
                 })}</div>
               
                 <label className="instructions">Instructions:</label>
-                <div className="detail_instructions">{state.title?
+                <div className="detail_instructions">{state.analyzedInstructions[0]?
                 <ul className="ulContainer">
                     {state.analyzedInstructions[0].steps.map(instruction => {
                         counter++                        
@@ -50,8 +50,8 @@ export default function RecipeDetail(props) {
                                 {instruction.step}
                             </li>
                     })}
-                </ul>
-                : <p>{state.analyzedInstructions}</p>}
+                    </ul>
+                    : <p>{state.analyzedInstructions}</p>}
             </div>            
                 <div className="detail_bottom">
                     <h4 className="label">HealthScore:{state.healthScore}</h4>
