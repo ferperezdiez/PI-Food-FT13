@@ -17,7 +17,7 @@
 .pagination_left{
  position: fixed;
 left: 0% ;
-background-color: transparent;
+
 border: none;
 font-size: 3em;
 
@@ -33,7 +33,7 @@ color: rgb(143, 122, 6);
 .pagination_right{
  position: fixed;
  right: 0% ;
- background-color: transparent;
+
  border: none;
  font-size: 3em;
 
