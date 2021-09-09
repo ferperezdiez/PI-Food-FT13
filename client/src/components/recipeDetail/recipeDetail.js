@@ -42,7 +42,7 @@ export default function RecipeDetail(props) {
                 })}</div>
               
                 <label className="instructions">Instructions:</label>
-                <div className="detail_instructions">{state.analyzedInstructions[0]?
+                <div className="detail_instructions">{state.analyzedInstructions.length > 0?
                 <ul className="ulContainer">
                     {state.analyzedInstructions[0].steps.map(instruction => {
                         counter++                        
