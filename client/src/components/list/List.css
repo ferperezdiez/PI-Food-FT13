@@ -29,24 +29,24 @@
 
 .list_img {
   width: 100%;	
-  opacity: 100%;
+
 }
 
 .list_title{
   text-decoration: none;
   color: green;
-  opacity: 100%;
+
 
 }
 
 .list_link{  
   text-decoration: none;
-  opacity: 100%;
+
 }
 
 .list_label {
     color: #a7824b;
-    opacity: 100%;
+  
     display: inline-block;
     background-color: burlywood;
     margin-right: 8px;
