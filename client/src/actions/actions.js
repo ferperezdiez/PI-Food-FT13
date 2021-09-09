@@ -113,9 +113,10 @@ export function addSorted(sorted){
 }
 
 export function addRecipe(id){
+              
     return (dispatch) => {
         axios.get(`/recipes/${id}`)
-            .then(response =>{                
+            .then(response =>{ 
                 dispatch({
                     type: ADD_RECIPE,
                     payload: response.data

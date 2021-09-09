@@ -2,33 +2,34 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { addRecipe } from '../../actions/actions';
-import {Link} from "react-router-dom"
-import './recipeDetail.css'
+import {Link} from "react-router-dom";
+import './recipeDetail.css';
+import mosaico from '../../images/recipeByUser.jpg'
 
 export default function RecipeDetail(props) {
  
     
     const dispatch = useDispatch()
-
+    const state = useSelector(state => state.recipe)
+  
+   
     useEffect(() => {
         const idParams = props.match.params.id;
-      
         dispatch(addRecipe(idParams))        
     }, [props.match.params.id, dispatch])
     
-    const state = useSelector(state => state.recipe)
     function summary(){
         return {__html: state.summary};
      }
    
      var counter = 200
-
+  
     return (
         <div  className="container-detail">
                 <h1  className="title-detail">{state.title? state.title : state.name }</h1>
                <div  className="detail_plate_container">
                     <div  className="plate">
-                        <img  className="detail_image" src={state.image} alt="img"/>
+                        <img  className="detail_image" src={state.image ? state.image : mosaico} alt="img"/>
                     </div>
                </div>
                 <div  className="paragraph-detail">
@@ -42,7 +43,7 @@ export default function RecipeDetail(props) {
                 })}</div>
               
                 <label className="instructions">Instructions:</label>
-                <div className="detail_instructions">{typeof state.analyzedInstructions !== 'string'?
+                <div className="detail_instructions">{state.analyzedInstructions && typeof state.analyzedInstructions !== 'string'?
                 <ul className="ulContainer">
                     {state.analyzedInstructions[0].steps.map(instruction => {
                         counter++                        
